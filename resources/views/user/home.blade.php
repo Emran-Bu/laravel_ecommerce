@@ -1,1 +1,1 @@
-user hone
+user home
