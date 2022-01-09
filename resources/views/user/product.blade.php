@@ -11,27 +11,33 @@
         @foreach($data as $product)
             
         <div class="col-md-4">
-          <div class="product-item">
-            <a href="#"><img src="/productimage/{{ $product->image }}" alt="" height="350px"></a>
+          <div class="product-item" style="height: 500px">
+            <a href="#"><img src="/productimage/{{ $product->image }}" alt="" style="height: 300px !important"></a>
             <div class="down-content">
               <a href="#"><h4>{{ $product->title }}</h4></a>
               <h6>$ {{ $product->price }}</h6>
               <p>{{ Str::substr($product->description, 0, 75)}} ...</p>
-              {{-- <p>{{ strtook($product->description) }}</p> --}}
-              <ul class="stars">
+              {{-- <ul class="stars">
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
-              </ul>
+              </ul> --}}
               {{-- <span>Reviews (32)</span> --}}
             </div>
           </div>
         </div>
-
+        
         @endforeach
 
+        
+
       </div>
+
+        <div class="d-flex justify-content-center">
+            {!! $data->links() !!}
+        </div>
+        
     </div>
   </div>
