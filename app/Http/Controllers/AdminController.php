@@ -64,7 +64,15 @@ class AdminController extends Controller
 
         $image = $request->file;
 
+        $oldImage = $data->image;
+
+        $oldImage = 'productimage/' . $oldImage;
+
         if ($image) {
+
+            if ($oldImage) {
+                unlink($oldImage);
+            }
 
             $imagename = time() . '.' . $image->getClientOriginalExtension();
 
@@ -73,7 +81,7 @@ class AdminController extends Controller
             $data->image = $imagename;
 
         }
-        
+
         $data->title = $request->title;
 
         $data->price = $request->price;
