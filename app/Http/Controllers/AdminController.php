@@ -55,6 +55,12 @@ class AdminController extends Controller
     public function updateview($id)
     {
         $data = product::find($id);
-        return view('admin.updateview', compact($data));
+        return view('admin.updateview', compact('data'));
+    }
+
+    public function updateproduct(Request $request, $id)
+    {
+        $data = product::find($id);
+        return view('admin.updateview', compact('data'));
     }
 }
