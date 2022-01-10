@@ -38,4 +38,23 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Product added successfully');
     }
+
+    public function showproduct()
+    {
+        $data = product::paginate(1);
+        return view('admin.showproduct', compact('data'));
+    }
+
+    public function deleteproduct($id)
+    {
+        $data = product::find($id);
+        $data->delete();
+        return redirect()->back()->with('message', 'Product deleted successfully');
+    }
+
+    public function updateview($id)
+    {
+        $data = product::find($id);
+        return view('admin.updateview', compact($data));
+    }
 }

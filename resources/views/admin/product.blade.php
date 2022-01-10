@@ -45,7 +45,7 @@
                     </div>
                     <div style="padding: 15px">
                         <label for="quantiity">Quantity</label>
-                        <input class="text-dark" type="number" name="quantiity" id="quantiity" placeholder="Give a quantiity" required>
+                        <input class="text-dark" type="number" name="quantity" id="quantiity" placeholder="Give a quantiity" required>
                     </div>
                     <div style="padding: 15px">
                         <input type="file" name="file" id="file">
