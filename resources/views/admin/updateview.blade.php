@@ -45,11 +45,11 @@
                         <input class="text-dark" type="text" name="des" id="des" value="{{ $data->description }}" required>
                     </div>
                     <div style="padding: 15px">
-                        <label for="quantiity">Quantity</label>
-                        <input class="text-dark" type="number" name="quantity" id="quantiity" value="{{ $data->quantity }}" required>
+                        <label for="quantity">Quantity</label>
+                        <input class="text-dark" type="number" name="quantity" id="quantity" value="{{ $data->quantity }}" required>
                     </div>
                     <div style="padding: 15px">
-                        <label for="quantiity">Old Image</label>
+                        <label for="image">Old Image</label>
                         <img src="productimage/{{ $data->image }}" alt="" height="100px" width="100px">
                     </div>
                     <div style="padding: 15px">
