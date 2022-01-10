@@ -13,6 +13,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!--
 
 TemplateMo 546 Sixteen Clothing
@@ -83,6 +85,13 @@ https://templatemo.com/tm-546-sixteen-clothing
         </div>
       </nav>
     </header>
+
+    @if(session()->has('message'))
+        <div class="alert alert-success fixed-top d-inline" style="margin-top: 88px; width: 400px; margin-left: 920px;">
+            {{ session()->get('message') }}
+            <button style="line-height: 0.8;" class="close" type="button" data-dismiss="alert">x</button>
+        </div>
+    @endif
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->

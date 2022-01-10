@@ -24,15 +24,13 @@
               <a href="#"><h4>{{ $product->title }}</h4></a>
               <h6>$ {{ $product->price }}</h6>
               <p>{{ Str::substr($product->description, 0, 75)}} ...</p>
-              <a class="btn btn-sm btn-warning float-right" href="#">Add Cart</a>
-              {{-- <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul> --}}
-              {{-- <span>Reviews (32)</span> --}}
+
+              <form class="form-inline justify-content-end" action="{{ url('addcart', $product->id) }}" method="post">
+                  @csrf
+                  <input class="form-control form-control-sm mr-3 w-25" type="number" min="1" name="quantity" id="quantity">
+                  <input class="btn btn-sm btn-warning" type="submit" value="Add Cart" name="" id="">
+              </form>
+
             </div>
           </div>
         </div>
