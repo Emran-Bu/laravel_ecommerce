@@ -27,7 +27,7 @@
 
               <form class="form-inline justify-content-end" action="{{ url('addcart', $product->id) }}" method="post">
                   @csrf
-                  <input class="form-control form-control-sm mr-3 w-25" type="number" min="1" name="quantity" id="quantity">
+                  <input class="form-control form-control-sm mr-3 w-25" type="number" min="1" name="quantity" id="quantity" required>
                   <input class="btn btn-sm btn-warning" type="submit" value="Add Cart" name="" id="">
               </form>
 

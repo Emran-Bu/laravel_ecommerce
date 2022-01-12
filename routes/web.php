@@ -44,3 +44,6 @@ Route::get('/search', [HomeController::class, 'search']);
 // add cart
 Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
 
+// show cart
+Route::get('/showcart', [HomeController::class, 'showcart']);
+

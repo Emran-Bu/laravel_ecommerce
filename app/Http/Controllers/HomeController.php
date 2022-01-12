@@ -20,7 +20,12 @@ class HomeController extends Controller
             return view('admin.home');
         }else{
             $data = Product::paginate(1);
-            return view('user.home', compact('data'));
+
+            // total cart
+            $user = auth()->user();
+            $count = Cart::where('phone', $user->phone)->count();
+
+            return view('user.home', compact('data', 'count'));
         }
     }
 
@@ -31,6 +36,7 @@ class HomeController extends Controller
         } else {
 
             $data = Product::paginate(1);
+
             return view('user.home', compact('data'));
         }
 
@@ -79,5 +85,18 @@ class HomeController extends Controller
        } else {
             return redirect('login');
         }
+    }
+
+    // show cart
+    public function showcart()
+    {
+        $user = auth()->user();
+
+        $cart = Cart::where('phone', $user->phone)->get();
+
+        // total cart
+        $count = Cart::where('phone', $user->phone)->count();
+
+        return view('user.showcart', compact('count', 'cart'));
     }
 }
