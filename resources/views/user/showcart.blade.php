@@ -105,7 +105,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                         <td>{{ $row['product_title'] }}</td>
                         <td>{{ $row['quantity'] }}</td>
                         <td>{{ $row['price'] }}</td>
-                        <td><a href="{{ url('delete', $row->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
+                        <td><a href="{{ url('deletecart', $row->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>
