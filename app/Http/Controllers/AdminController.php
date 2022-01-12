@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 
+use App\Models\Order;
+
 class AdminController extends Controller
 {
     // product
@@ -93,5 +95,22 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back()->with('message', 'Product updated successfully');
+    }
+
+    public function showorders()
+    {
+        $order = Order::all();
+        return view('admin.showorders', compact('order'));
+    }
+
+    public function updatestatus($id)
+    {
+        $order = Order::find($id);
+
+        $order->status = 'delivered';
+
+        $order->save();
+        
+        return redirect()->back();
     }
 }
