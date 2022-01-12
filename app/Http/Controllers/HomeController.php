@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -107,6 +108,40 @@ class HomeController extends Controller
         
         $cart->delete();
 
-        return redirect()->back()->with('message', 'Cart Deleted Successfully');
+        return redirect()->back()->with('message', 'Product Removed Successfully');
+    }
+
+    // order
+    public function confirmorder(Request $request)
+    {
+        $user = auth()->user();
+
+        $name = $user->name;
+        $phone = $user->phone;
+        $address = $user->address;
+
+        foreach ($request->productname as $key => $productname) {
+
+            $order = new Order();
+
+            $order->product_name = $request->productname[$key];
+
+            $order->quantity = $request->quantity[$key];
+
+            $order->price = $request->price[$key];
+
+            $order->name = $name;
+
+            $order->phone = $phone;
+
+            $order->address = $address;
+
+            $order->status = 'not delivered';
+
+            $order->save();
+
+        }
+
+        return redirect()->back()->with('message', 'Ordered Successfully');
     }
 }

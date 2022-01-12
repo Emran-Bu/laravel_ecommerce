@@ -99,17 +99,23 @@ https://templatemo.com/tm-546-sixteen-clothing
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <form action="{{ url('order') }}" method="post">
+                @csrf
+                                    
+                <tbody>
                 @foreach($cart as $row)
                     <tr>
-                        <td>{{ $row['product_title'] }}</td>
-                        <td>{{ $row['quantity'] }}</td>
-                        <td>{{ $row['price'] }}</td>
+                        <td>{{ $row['product_title'] }} <input type="text" name="productname[]" id="" value="{{ $row->product_title }}" hidden></td>
+                        <td>{{ $row['quantity'] }} <input type="text" name="quantity[]" id="" value="{{ $row->quantity }}" hidden></td>
+                        <td>{{ $row['price'] }} <input type="text" name="price[]" id="" value="{{ $row->price }}" hidden></td>
                         <td><a href="{{ url('deletecart', $row->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
-                @endforeach
             </tbody>
         </table>
+        <button type="submit" class="btn-sm btn-success btn">Confirm Order</button>
+        {{-- @endif --}}
+        </form>
+
     </div>
 
     @if(session()->has('message'))
