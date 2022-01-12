@@ -107,6 +107,6 @@ class HomeController extends Controller
         
         $cart->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Cart Deleted Successfully');
     }
 }
