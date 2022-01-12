@@ -51,26 +51,23 @@ https://templatemo.com/tm-546-sixteen-clothing
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="products.html">Our Products</a>
+                <a class="nav-link" href="{{ url('about') }}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
+                <a class="nav-link" href="{{ url('contactus') }}">Contact Us</a>
               </li>
               <li class="nav-item">
                 @if(Route::has('login'))
                     @auth
 
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ url('showcart') }}"><i class="fa fa-shopping-cart"></i>Cart[{{ $count }}]</a>
+                      <a class="nav-link active" href="{{ url('showcart') }}"><i class="fa fa-shopping-cart"></i>Cart[{{ $count }}]</a>
                     </li>
                         <x-app-layout>
 
@@ -89,14 +86,11 @@ https://templatemo.com/tm-546-sixteen-clothing
       </nav>
     </header>
 
-    {{-- @if(empty($cart))
+    <div style="padding: 100px; min-height: 75vh;">
+        @if($count == null)
         
-    @else --}}
-    {{-- @empty($cart) --}}
-        
-    {{-- @else --}}
-    <div style="padding: 100px">
-        <table class="table table-striped text-center">
+        @else
+        <table class="table table-striped text-center table-bordered">
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -120,13 +114,13 @@ https://templatemo.com/tm-546-sixteen-clothing
                 </tbody>
         </table>
         
-            <button type="submit" class="btn-sm btn-success btn">Confirm Order</button>
+            <div align="center">
+                <button onclick="return confirm('Are You Sure Confirm Order?')" type="submit" class="btn-sm btn-success btn">Confirm Order</button>
+            </div>
 
         </form>
-
+        @endif
     </div>
-    {{-- @endif --}}
-    {{-- @endempty --}}
 
     @if(session()->has('message'))
         <div class="alert alert-success fixed-top d-inline" style="margin-top: 88px; width: 400px; margin-left: 920px;">
@@ -141,8 +135,6 @@ https://templatemo.com/tm-546-sixteen-clothing
           <div class="col-md-12">
             <div class="inner-content">
               <p>Copyright &copy; 2022 Sixteen Clothing Co., Ltd.
-
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
             </div>
           </div>
         </div>

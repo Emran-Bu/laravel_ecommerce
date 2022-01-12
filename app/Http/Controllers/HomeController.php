@@ -147,4 +147,27 @@ class HomeController extends Controller
 
         return redirect()->back()->with('message', 'Ordered Successfully');
     }
+
+    // page add
+    public function about()
+    {
+        if (Auth::id()) {
+            $user = auth()->user();
+            $count = Cart::where('phone', $user->phone)->count();
+            return view('user.about', compact('count'));
+        } else {
+            return redirect('login');
+        }
+    }
+
+    public function contactus()
+    {
+        if(Auth::id()){
+            $user = auth()->user();
+            $count = Cart::where('phone', $user->phone)->count();
+            return view('user.contactus', compact('count'));
+        } else {
+            return redirect('login');
+        }
+    }
 }

@@ -59,3 +59,9 @@ Route::get('/showorders', [AdminController::class, 'showorders']);
 // update status
 Route::get('/updatestatus/{id}', [AdminController::class, 'updatestatus']);
 
+// page add
+Route::get('/about', [HomeController::class, 'about']);
+
+Route::get('/contactus', [HomeController::class, 'contactus']);
+
+

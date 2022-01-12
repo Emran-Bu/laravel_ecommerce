@@ -57,13 +57,10 @@ https://templatemo.com/tm-546-sixteen-clothing
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="products.html">Our Products</a>
+                <a class="nav-link" href="{{ url('about') }}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
+                <a class="nav-link" href="{{ url('contactus') }}">Contact Us</a>
               </li>
               <li class="nav-item">
                 @if(Route::has('login'))
@@ -143,7 +140,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <li><a href="#">Corporis, omnis doloremque</a></li>
                 <li><a href="#">Non cum id reprehenderit</a></li>
               </ul>
-              <a href="about.html" class="filled-button">Read More</a>
+              <a href="{{ url('about') }}"" class="filled-button">Read More</a>
             </div>
           </div>
           <div class="col-md-6">
@@ -183,8 +180,6 @@ https://templatemo.com/tm-546-sixteen-clothing
           <div class="col-md-12">
             <div class="inner-content">
               <p>Copyright &copy; 2022 Sixteen Clothing Co., Ltd.
-
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
             </div>
           </div>
         </div>
