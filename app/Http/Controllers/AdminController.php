@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     // product
     public function product()
     {
-        return view('admin.product');
+        if(Auth::id()){
+            if (Auth::user()->usertype=='1') {
+            return view('admin.product');
+            } else {
+                return redirect()->back();
+            }
+            
+        } else {
+            return redirect('login');
+        }
     }
 
     public function uploadproduct(Request $request)
@@ -110,7 +120,7 @@ class AdminController extends Controller
         $order->status = 'delivered';
 
         $order->save();
-        
+
         return redirect()->back();
     }
 }

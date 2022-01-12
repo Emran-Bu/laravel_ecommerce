@@ -89,6 +89,12 @@ https://templatemo.com/tm-546-sixteen-clothing
       </nav>
     </header>
 
+    {{-- @if(empty($cart))
+        
+    @else --}}
+    {{-- @empty($cart) --}}
+        
+    {{-- @else --}}
     <div style="padding: 100px">
         <table class="table table-striped text-center">
             <thead>
@@ -108,7 +114,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                         <td>{{ $row['product_title'] }} <input type="text" name="productname[]" id="" value="{{ $row->product_title }}" hidden></td>
                         <td>{{ $row['quantity'] }} <input type="text" name="quantity[]" id="" value="{{ $row->quantity }}" hidden></td>
                         <td>{{ $row['price'] }} <input type="text" name="price[]" id="" value="{{ $row->price }}" hidden></td>
-                        <td><a href="{{ url('deletecart', $row->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
+                        <td><a onclick="return confirm('Are You Sure Delete?')" href="{{ url('deletecart', $row->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -119,6 +125,8 @@ https://templatemo.com/tm-546-sixteen-clothing
         </form>
 
     </div>
+    {{-- @endif --}}
+    {{-- @endempty --}}
 
     @if(session()->has('message'))
         <div class="alert alert-success fixed-top d-inline" style="margin-top: 88px; width: 400px; margin-left: 920px;">
