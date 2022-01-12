@@ -110,10 +110,12 @@ https://templatemo.com/tm-546-sixteen-clothing
                         <td>{{ $row['price'] }} <input type="text" name="price[]" id="" value="{{ $row->price }}" hidden></td>
                         <td><a href="{{ url('deletecart', $row->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
-            </tbody>
+                @endforeach
+                </tbody>
         </table>
-        <button type="submit" class="btn-sm btn-success btn">Confirm Order</button>
-        {{-- @endif --}}
+        
+            <button type="submit" class="btn-sm btn-success btn">Confirm Order</button>
+
         </form>
 
     </div>
