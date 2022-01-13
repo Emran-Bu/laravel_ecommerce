@@ -23,8 +23,13 @@
             <div class="down-content">
               <a href="#"><h4>{{ $product->title }}</h4></a>
               <h6>${{ $product->price }}</h6>
-              <p>{{ Str::substr($product->description, 0, 75)}} ...</p>
 
+              <div class="d-flex justify-content-between">
+                <p class="text-dark">Quantity</p>
+                <p class="text-dark">{{ $product->quantity }}</p>
+              </div>
+
+              <p>{{ Str::substr($product->description, 0, 75)}} ...</p>
               <form class="form-inline justify-content-end" action="{{ url('addcart', $product->id) }}" method="post">
                   @csrf
                   <input class="form-control form-control-sm mr-3 w-25" type="number" min="1" name="quantity" id="quantity" required>

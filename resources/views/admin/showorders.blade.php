@@ -35,7 +35,13 @@
                                 <td>{{ $orders->price }}</td>
                                 <td>{{ $orders->quantity }}</td>
                                 <td>{{ $orders->status }}</td>
-                                <td><a onclick="return confirm('Are You Sure?')" href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm">Delivered</a>
+
+                                <td>
+                                    @if($orders->status == 'not delivered')
+                                    <a onclick="return confirm('Are You Sure?')" href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm">Delivered</a>
+                                    @else
+                                    <a onclick="return confirm('Are You Sure?')" href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm disabled" >Delivered</a>
+                                    @endif
                                 @if($orders->status == 'not delivered')
                                 <a onclick="alert('Do Not Product Delivered!')" href="#" class="btn btn-danger btn-sm">Delete</a></td>
                                 @else

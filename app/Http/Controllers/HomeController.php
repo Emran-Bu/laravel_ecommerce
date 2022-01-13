@@ -21,7 +21,7 @@ class HomeController extends Controller
         if($usertype == '1'){
             return view('admin.home');
         }else{
-            $data = Product::orderBy('id', 'desc')->paginate(6);
+            $data = Product::orderBy('id', 'asc')->paginate(6);
 
             // total cart
             $user = auth()->user();
@@ -37,7 +37,7 @@ class HomeController extends Controller
             return redirect('redirect');
         } else {
 
-            $data = Product::paginate(1);
+            $data = Product::paginate(6);
 
             return view('user.home', compact('data'));
         }
@@ -48,24 +48,32 @@ class HomeController extends Controller
     {
        $search = $request->search;
 
-       if ($search == '') {
+       if (Auth::id()) {
+        // $user = auth()->user();
+        // $count = Cart::where('phone', $user->phone)->count();
+        // return view('user.about', compact('count'));
+
+            if ($search == '') {
+                $data = Product::paginate(3);
+                $user = auth()->user();
+                $count = Cart::where('phone', $user->phone)->count();
+                return view('user.home', compact('data', 'count'));
+            }
+
             // total cart
             $user = auth()->user();
 
             $count = Cart::where('phone', $user->phone)->count();
 
-            $data = Product::paginate(3);
+            $data = Product::where('title', 'Like', '%'. $search . '%')->get();
+
             return view('user.home', compact('data', 'count'));
-       }
 
-       // total cart
-       $user = auth()->user();
 
-       $count = Cart::where('phone', $user->phone)->count();
+        } else {
+            return redirect('login');
+        }
 
-       $data = Product::where('title', 'Like', '%'. $search . '%')->get();
-
-       return view('user.home', compact('data', 'count'));
 
     }
 
