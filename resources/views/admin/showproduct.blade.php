@@ -21,7 +21,7 @@
                         <th>S/L</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Quality</th>
+                        <th>Quantity</th>
                         <th>Price</th>
                         <th>Image</th>
                         <th>Action</th>

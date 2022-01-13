@@ -55,7 +55,7 @@ class AdminController extends Controller
     {
         if (Auth::id()){
             if (Auth::user()->usertype == '1'){
-                $data = product::paginate(5);
+                $data = product::orderBy('id', 'desc')->paginate(4);
                 return view('admin.showproduct', compact('data'));
             } else {
                 return redirect()->back();
@@ -69,6 +69,15 @@ class AdminController extends Controller
     public function deleteproduct($id)
     {
         $data = product::find($id);
+
+        $image = $data->image;
+
+        $image = 'productimage/' . $image;
+
+        if ($image) {
+            unlink($image);
+        }
+
         $data->delete();
         return redirect()->back()->with('message', 'Product deleted successfully');
     }

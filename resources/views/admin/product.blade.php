@@ -22,8 +22,8 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <div class="container" align="center">
-                <h1 class="title">Add Product</h1>
-                <form action="{{ url('uploadproduct') }}" method="post" enctype="multipart/form-data">
+                <h1 class="title text-dark fw-bold">Add Product</h1>
+                <form class="" action="{{ url('uploadproduct') }}" method="post" enctype="multipart/form-data">
                     @if(session()->has('message'))
                         <div class="alert alert-success">
                             {{ session()->get('message') }}
@@ -48,10 +48,10 @@
                         <input class="text-dark" type="number" name="quantity" id="quantity" placeholder="Give a quantiity" required>
                     </div>
                     <div style="padding: 15px">
-                        <input type="file" name="file" id="file">
+                        <input type="file" name="file" id="file" required>
                     </div>
                     <div style="padding: 15px">
-                        <input class="btn btn-primary" type="submit" name="submit" id="submit">
+                        <input class="btn btn-primary" type="submit" value="Add Product" name="submit" id="submit">
                     </div>
                 </form>
             </div>

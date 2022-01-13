@@ -23,7 +23,7 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <div class="container" align="center">
-                <h1 class="title">Add Product</h1>
+                <h1 class="title text-dark">Update Product</h1>
                 <form action="{{ url('updateproduct', $data->id) }}" method="post" enctype="multipart/form-data">
                     @if(session()->has('message'))
                         <div class="alert alert-success">
@@ -58,7 +58,7 @@
                     </div>
 
                     <div style="padding: 15px">
-                        <input class="btn btn-primary" type="submit" name="submit" id="submit">
+                        <input class="btn btn-primary" type="submit" name="submit" value="Update Product" id="submit">
                     </div>
                 </form>
             </div>

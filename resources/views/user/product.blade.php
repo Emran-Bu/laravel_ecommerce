@@ -22,7 +22,7 @@
             <a href="#"><img src="/productimage/{{ $product->image }}" alt="" style="height: 180px !important"></a>
             <div class="down-content">
               <a href="#"><h4>{{ $product->title }}</h4></a>
-              <h6>$ {{ $product->price }}</h6>
+              <h6>${{ $product->price }}</h6>
               <p>{{ Str::substr($product->description, 0, 75)}} ...</p>
 
               <form class="form-inline justify-content-end" action="{{ url('addcart', $product->id) }}" method="post">
