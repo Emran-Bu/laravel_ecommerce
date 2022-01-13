@@ -24,3 +24,5 @@
 <!-- Custom js for this page -->
 <script src="admin/assets/js/dashboard.js"></script>
 <!-- End custom js for this page -->
+<script src="admin/assets/js/jquery-3.5.1.min.js"></script>
+<!-- End custom js for this page -->

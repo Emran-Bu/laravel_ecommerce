@@ -16,7 +16,7 @@
                         <button class="close" type="button" data-dismiss="alert">x</button>
                     </div>
                 @endif
-                <table class="table table-striped text-center">
+                <table class="table table-striped text-center table-bordered">
                     <tr>
                         <th>S/L</th>
                         <th>Title</th>
@@ -37,7 +37,7 @@
                             <td class="" align="center"><img class="img-fluid" src="productimage/{{ $product->image }}" alt="" style="height: 75px; width: 75px; border-radius: 0px !important;"></td>
                             <td>
                                 <a class="btn-sm btn btn-primary" href="{{ url('updateview', $product->id) }}">Edit</a>
-                                <a class="btn-sm btn btn-danger" href="{{ url('deleteproduct', $product->id) }}">Delete</a>
+                                <a onclick="return confirm('Are You Sure?')" class="btn-sm btn btn-danger" href="{{ url('deleteproduct', $product->id) }}">Delete</a>
                             </td>
                         </tr>
                     @endforeach

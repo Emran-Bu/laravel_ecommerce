@@ -3,14 +3,14 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="index.html"><img src="admin/assets/images/logo.svg" alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
       </div>
       <ul class="nav">
         <li class="nav-item profile">
           <div class="profile-desc">
             <div class="profile-pic">
               <div class="count-indicator">
-                <img class="img-xs rounded-circle " src="admin/assets/images/faces/face15.jpg" alt="">
+                <img class="img-xs rounded-circle " src="admin/assets/images/faces/face19.jpg" alt="">
                 <span class="count bg-success"></span>
               </div>
               <div class="profile-name">
@@ -58,8 +58,8 @@
         <li class="nav-item nav-category">
           <span class="nav-link">Navigation</span>
         </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="index.html">
+        <li class="nav-item menu-items {{ request()->is('redirect') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ url('/') }}">
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
             </span>
@@ -67,7 +67,7 @@
           </a>
         </li>
 
-        <li class="nav-item menu-items">
+        <li id="navActive" class="nav-item menu-items {{ request()->is('product') ? 'active' : '' }}">
           <a class="nav-link" href="{{ url('product') }}">
             <span class="menu-icon">
               <i class="mdi mdi-file-document-box"></i>
@@ -76,7 +76,7 @@
           </a>
         </li>
 
-        <li class="nav-item menu-items">
+        <li id="navActiveRemove" class="nav-item menu-items {{ request()->is('showproduct') ? 'active' : '' }}">
           <a class="nav-link" href="{{ url('showproduct') }}">
             <span class="menu-icon">
               <i class="mdi mdi-file-document-box"></i>

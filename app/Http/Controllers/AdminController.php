@@ -20,7 +20,7 @@ class AdminController extends Controller
             } else {
                 return redirect()->back();
             }
-            
+
         } else {
             return redirect('login');
         }
@@ -53,8 +53,17 @@ class AdminController extends Controller
 
     public function showproduct()
     {
-        $data = product::paginate(1);
-        return view('admin.showproduct', compact('data'));
+        if (Auth::id()){
+            if (Auth::user()->usertype == '1'){
+                $data = product::paginate(5);
+                return view('admin.showproduct', compact('data'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect('login');
+        }
+
     }
 
     public function deleteproduct($id)
@@ -66,8 +75,16 @@ class AdminController extends Controller
 
     public function updateview($id)
     {
-        $data = product::find($id);
-        return view('admin.updateview', compact('data'));
+        if (Auth::id()){
+            if (Auth::user()->usertype == '1'){
+                $data = product::find($id);
+                return view('admin.updateview', compact('data'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect('login');
+        }
     }
 
     public function updateproduct(Request $request, $id)
@@ -109,8 +126,27 @@ class AdminController extends Controller
 
     public function showorders()
     {
-        $order = Order::all();
-        return view('admin.showorders', compact('order'));
+
+        if (Auth::id()){
+            if (Auth::user()->usertype == '1'){
+                $order = Order::orderBy('id', 'desc')->paginate(8);
+                return view('admin.showorders', compact('order'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect('login');
+        }
+
+    }
+
+    public function deleteorder($id)
+    {
+        $deleteorder = Order::find($id);
+
+        $deleteorder->delete();
+
+        return redirect()->back()->with('message', 'Order deleted successfully');;
     }
 
     public function updatestatus($id)

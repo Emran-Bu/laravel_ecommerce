@@ -35,11 +35,21 @@
                                 <td>{{ $orders->price }}</td>
                                 <td>{{ $orders->quantity }}</td>
                                 <td>{{ $orders->status }}</td>
-                                <td><a href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm">Delivered</a></td>
+                                <td><a href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm">Delivered</a>
+                                @if($orders->status == 'not delivered')
+                                <a onclick="alert('Do Not Product Delivered!')" href="#" class="btn btn-danger btn-sm">Delete</a></td>
+                                @else
+                                <a href="{{ url('deleteorder', $orders->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                @if(method_exists($order, 'links'))
+                    <div class="d-flex justify-content-center">
+                        {{ $order->links() }}
+                    </div>
+                @endif
             </div>
         </div>
           <!-- partial -->

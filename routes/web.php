@@ -56,6 +56,9 @@ Route::post('/order', [HomeController::class, 'confirmorder']);
 // show order
 Route::get('/showorders', [AdminController::class, 'showorders']);
 
+// order delete
+Route::get('/deleteorder/{id}', [AdminController::class, 'deleteorder']);
+
 // update status
 Route::get('/updatestatus/{id}', [AdminController::class, 'updatestatus']);
 
