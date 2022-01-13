@@ -88,7 +88,9 @@ https://templatemo.com/tm-546-sixteen-clothing
 
     <div style="padding: 100px; min-height: 75vh;">
         @if($count == null)
-        
+            <div class="alert alert-warning fixed-top text-center d-inline" style="margin-top: 150px; width: 400px; margin-left: 500px;">
+                You did not attach to a product cart list!
+            </div>
         @else
         <table class="table table-striped text-center table-bordered">
             <thead>
@@ -101,7 +103,7 @@ https://templatemo.com/tm-546-sixteen-clothing
             </thead>
             <form action="{{ url('order') }}" method="post">
                 @csrf
-                                    
+
                 <tbody>
                 @foreach($cart as $row)
                     <tr>
@@ -113,7 +115,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                 @endforeach
                 </tbody>
         </table>
-        
+
             <div align="center">
                 <button onclick="return confirm('Are You Sure Confirm Order?')" type="submit" class="btn-sm btn-success btn">Confirm Order</button>
             </div>

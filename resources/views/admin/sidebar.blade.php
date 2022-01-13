@@ -1,3 +1,19 @@
+<style>
+    .sidebar .nav .nav-item.active > .nav-link {
+        background: none !important;
+    }
+
+    .sidebar .nav .nav-item.itemactive > .nav-link{
+        /* position: relative !important; */
+        background: #0f1015 !important;
+    }
+
+    .sidebar .nav .nav-item:hover > .nav-link{
+        position: relative !important;
+        background: #0f1015 !important;
+        border-radius: 0px 100px 100px 0px;
+    }
+</style>
 <div class="container-scroller">
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -58,7 +74,7 @@
         <li class="nav-item nav-category">
           <span class="nav-link">Navigation</span>
         </li>
-        <li class="nav-item menu-items {{ request()->is('redirect') ? 'active' : '' }}">
+        <li class="nav-item menu-items active {{ request()->is('redirect') ? 'itemactive' : '' }}">
           <a class="nav-link" href="{{ url('/') }}">
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
@@ -67,7 +83,7 @@
           </a>
         </li>
 
-        <li id="navActive" class="nav-item menu-items {{ request()->is('product') ? 'active' : '' }}">
+        <li class="nav-item menu-items active {{ request()->is('product') ? 'itemactive' : '' }}">
           <a class="nav-link" href="{{ url('product') }}">
             <span class="menu-icon">
               <i class="mdi mdi-file-document-box"></i>
@@ -76,7 +92,7 @@
           </a>
         </li>
 
-        <li id="navActiveRemove" class="nav-item menu-items {{ request()->is('showproduct') ? 'active' : '' }}">
+        <li class="nav-item menu-items active {{ request()->is('showproduct') ? 'itemactive' : '' }}">
           <a class="nav-link" href="{{ url('showproduct') }}">
             <span class="menu-icon">
               <i class="mdi mdi-file-document-box"></i>
@@ -85,7 +101,7 @@
           </a>
         </li>
 
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items active {{ request()->is('showorders') ? 'itemactive' : '' }}">
           <a class="nav-link" href="{{ url('showorders') }}">
             <span class="menu-icon">
               <i class="mdi mdi-file-document-box"></i>
@@ -96,3 +112,4 @@
 
       </ul>
     </nav>
+    {{-- {{ request()->is('showproduct') ? 'active' : '' }} --}}

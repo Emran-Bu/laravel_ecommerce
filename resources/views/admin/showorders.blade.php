@@ -35,11 +35,11 @@
                                 <td>{{ $orders->price }}</td>
                                 <td>{{ $orders->quantity }}</td>
                                 <td>{{ $orders->status }}</td>
-                                <td><a href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm">Delivered</a>
+                                <td><a onclick="return confirm('Are You Sure?')" href="{{ url('updatestatus', $orders->id) }}" class="btn btn-success btn-sm">Delivered</a>
                                 @if($orders->status == 'not delivered')
                                 <a onclick="alert('Do Not Product Delivered!')" href="#" class="btn btn-danger btn-sm">Delete</a></td>
                                 @else
-                                <a href="{{ url('deleteorder', $orders->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
+                                <a onclick="return confirm('Are You Sure?')" href="{{ url('deleteorder', $orders->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
                                 @endif
                             </tr>
                         @endforeach
@@ -52,6 +52,14 @@
                 @endif
             </div>
         </div>
+
+
+    @if(session()->has('message'))
+        <div class="alert alert-success fixed-top d-inline" style="margin-top: 88px; width: 400px; margin-left: 920px;">
+            {{ session()->get('message') }}
+            <button style="line-height: 0.8;" class="close" type="button" data-dismiss="alert">x</button>
+        </div>
+    @endif
           <!-- partial -->
           @include('admin.script')
   </body>

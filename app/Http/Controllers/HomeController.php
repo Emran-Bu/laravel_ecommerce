@@ -21,7 +21,7 @@ class HomeController extends Controller
         if($usertype == '1'){
             return view('admin.home');
         }else{
-            $data = Product::paginate(1);
+            $data = Product::orderBy('id', 'desc')->paginate(6);
 
             // total cart
             $user = auth()->user();
@@ -49,7 +49,7 @@ class HomeController extends Controller
        $search = $request->search;
 
        if ($search == '') {
-            $data = Product::paginate(1);
+            $data = Product::paginate(3);
             return view('user.home', compact('data'));
        }
 
@@ -106,7 +106,7 @@ class HomeController extends Controller
     public function deletecart($id)
     {
         $cart = Cart::find($id);
-        
+
         $cart->delete();
 
         return redirect()->back()->with('message', 'Product Removed Successfully');
