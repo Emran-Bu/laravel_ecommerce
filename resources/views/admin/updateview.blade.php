@@ -62,6 +62,14 @@
                     </div>
                 </form>
             </div>
+            {{-- alert wrong --}}
+            @if(session()->has('danger'))
+            <div class="alert alert-danger fixed-top d-inline" style="margin-top: 88px; width: 400px; margin-left: 920px;">
+                {{ session()->get('danger') }}
+                <button style="line-height: 0.8;" class="close" type="button" data-dismiss="alert">x</button>
+            </div>
+            @endif
+            {{-- alert wrong --}}
         </div>
           <!-- partial -->
           @include('admin.script')

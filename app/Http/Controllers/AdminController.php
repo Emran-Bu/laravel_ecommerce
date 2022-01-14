@@ -87,6 +87,9 @@ class AdminController extends Controller
         if (Auth::id()){
             if (Auth::user()->usertype == '1'){
                 $data = product::find($id);
+                if(empty($data)){
+                    return redirect()->back()->with('danger', 'Searching Went Wrong!');
+                }
                 return view('admin.updateview', compact('data'));
             } else {
                 return redirect()->back();
